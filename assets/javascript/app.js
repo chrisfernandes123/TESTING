@@ -108,7 +108,9 @@ function getSupportedLanguagesYandex(sourceLanguage){
 
     //var queryURL = "https://translate.yandex.net/api/v1.5/tr.json/getLangs?key=trnsl.1.1.20181120T185250Z.245d06bd93fae3b3.650dd5c0e49e6bd5f17ac6a446ae8362c5a2da91&ui=" & sourceLanguage;
       var queryURL = "https://translate.yandex.net/api/v1.5/tr.json/getLangs?key=trnsl.1.1.20181120T185250Z.245d06bd93fae3b3.650dd5c0e49e6bd5f17ac6a446ae8362c5a2da91&ui="  + sourceLanguage;
-    $.ajax({
+    
+        console.log(queryURL);
+      $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function (response) {
@@ -131,16 +133,16 @@ getSupportedLanguagesYandex("en");
 
 
 
-function translateTextYandex (textToTranslate, languageFrom, languageTo, format)
+function translateTextYandex (textToTranslate, languageFrom, languageTo, format){
 
+  // var queryURL = "https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20181120T185250Z.245d06bd93fae3b3.650dd5c0e49e6bd5f17ac6a446ae8362c5a2da91" ;
     
-
-
-    var queryURL = "https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20181120T185250Z.245d06bd93fae3b3.650dd5c0e49e6bd5f17ac6a446ae8362c5a2da91" 
-    
+    var queryURL = "test";
     queryURL = queryURL + "&text=" + textToTranslate;
     queryURL = queryURL + "&lang=" + languageFrom + "-" + languageTo;
     queryURL = queryURL + "&format=" + format;
+
+    console.log(queryURL);
  
         $.ajax({
             url: queryURL,
@@ -150,3 +152,6 @@ function translateTextYandex (textToTranslate, languageFrom, languageTo, format)
             console.log(response);
         
         }); 
+}
+
+translateTextYandex ("Hello world", "en", "ru", "plain");
