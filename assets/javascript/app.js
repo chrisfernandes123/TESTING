@@ -113,7 +113,7 @@ function getSupportedLanguagesYandex(sourceLanguage){
         method: "GET"
     }).then(function (response) {
         console.log("response retreived");
-       
+        console.log(response);
         console.log(response.langs[0]);
 
         for (i=0; i< response.langs.length; i++){
