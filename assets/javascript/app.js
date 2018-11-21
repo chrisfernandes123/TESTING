@@ -3,8 +3,8 @@
     //var queryURLRecentRecalsSummary = "http://healthycanadians.gc.ca/recall-alert-rappel-avis/api/recent/en"
     //   var queryURLRecentRecalsDetails = http://healthycanadians.gc.ca/recall-alert-rappel-avis/api/68318
 
-
     /*
+
 Request Sample 
 https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20181120T185250Z.245d06bd93fae3b3.650dd5c0e49e6bd5f17ac6a446ae8362c5a2da91&text=%22One%20lot%20each%20of%20Option+%20Family%20Sunscreen%20Lotion%20SPF%2050+%20and%20Personnelle%20Sport%20Sunscreen%20Lotion%20SPF%2050+%20have%20been%20voluntarily%20recalled%20by%20Empack%20Spraytech%20Inc.%20because%20of%20bacterial%20contamination.\n\n%20The%20sunscreens%20were%20found%20to%20contain%20multiple%20types%20of%20bacteria:\n%3Cul%3E\n%20%3Cli%3E\n%20Lactobacillus%20brevis,%20and%3C/li%3E\n%20%3Cli%3E\n%20Either%20Micrococcus%20luteus%20%3Cstrong%3Eor%20%3C/strong%3EStaphylococcus%20hominis%20novobiosepticus%20(see%20table%20below).%3C/li%3E\n%3C/ul%3E\n\n%20Although%20Lactobacillus%20brevis%20has%20not%20been%20documented%20to%20cause%20any%20illness%20in%20humans,%20the%20other%20two%20(Micrococcus%20luteus%20or%20Staphylococcus%20hominis%20novobiosepticus)%20may%20result%20in%20infection.%20The%20risk%20may%20be%20higher%20in%20children%20and%20individuals%20with%20a%20weakened%20immune%20system.%20To%20date,%20Health%20Canada%20has%20not%20received%20any%20adverse%20reaction%20reports%20involving%20the%20recalled%20sunscreens.%22&lang=en-ru
        
@@ -113,24 +113,25 @@ function getSupportedLanguagesYandex(sourceLanguage){
       $.ajax({
         url: queryURL,
         method: "GET"
-    }).then(function (response) {
+        }).then(function (response) {
         console.log("response retreived");
-        console.log(response);
-
-
+       // console.log(response);
 
         //console.log(response.langs[key]);
 
+        var entries = Object.entries(response.langs)
+       // console.log(entries)
 
-        const entries = Object.entries(response.langs)
-        console.log(entries)
-
-        // for (i=0; i< response.langs.length; i++){
-        //     supportedLanguages.push(response.langs[i]);  
-            
-        // }
-        // console.log(supportedLanguages[0]);
+       entries.forEach(function (lang) {
+        
+        console.log(lang[0],lang[1]);
   
+      });
+
+
+
+
+
     }); //End of Then
 
     return
@@ -144,6 +145,7 @@ function translateTextYandex (textToTranslate, languageFrom, languageTo, format)
 
  var queryURL = "https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20181120T185250Z.245d06bd93fae3b3.650dd5c0e49e6bd5f17ac6a446ae8362c5a2da91" ;
     
+
     queryURL = queryURL + "&text=" + textToTranslate;
     queryURL = queryURL + "&lang=" + languageFrom + "-" + languageTo;
     queryURL = queryURL + "&format=" + format;
