@@ -103,6 +103,7 @@ callback	The name of the callback function. Use for getting a JSONP response.
  
  */
 
+ var supportedLanguages = [];
 function getSupportedLanguagesYandex(sourceLanguage){
 
     //var queryURL = "https://translate.yandex.net/api/v1.5/tr.json/getLangs?key=trnsl.1.1.20181120T185250Z.245d06bd93fae3b3.650dd5c0e49e6bd5f17ac6a446ae8362c5a2da91&ui=" & sourceLanguage;
@@ -112,10 +113,16 @@ function getSupportedLanguagesYandex(sourceLanguage){
         method: "GET"
     }).then(function (response) {
 
-        console.log(response);
-
+       
+        for (i=0; i< response.langs.length; i++){
+            supportedLanguages.push(response.langs[i]);  
+            
+        }
+        console.log(response.langs[0]);
+  
     }); //End of Then
 
+    return
 }
 
 getSupportedLanguagesYandex("en");
