@@ -122,19 +122,8 @@ function getSupportedLanguagesYandex(sourceLanguage){
         //console.log(response.langs[key]);
 
 
-        for (var key in response) {
-            // skip loop if the property is from prototype
-            if (!response.hasOwnProperty(key)) continue;
-        
-            var obj = response[key];
-            for (var prop in obj) {
-                // skip loop if the property is from prototype
-                if(!obj.hasOwnProperty(prop)) continue;
-        
-                // your code
-                alert(prop + " = " + obj[prop]);
-            }
-        }
+        const entries = Object.entries(response.langs)
+        console.log(entries)
 
         // for (i=0; i< response.langs.length; i++){
         //     supportedLanguages.push(response.langs[i]);  
